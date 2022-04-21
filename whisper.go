@@ -19,6 +19,12 @@ import (
 	"github.com/multiformats/go-multiaddr"
 )
 
+type P2p interface {
+	Close()
+	WriteData(rw *bufio.ReadWriter)
+	ReadData(rw *bufio.ReadWriter)
+}
+
 type Whisper struct {
 	wg     sync.WaitGroup
 	rch    chan string
